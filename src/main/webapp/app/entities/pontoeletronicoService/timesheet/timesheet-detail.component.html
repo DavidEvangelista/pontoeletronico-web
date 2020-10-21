@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="timesheet">
+            <h2><span>Timesheet</span> {{ timesheet.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Weekday</span></dt>
+                <dd>
+                    <span>{{ timesheet.weekday }}</span>
+                </dd>
+                <dt><span>Checkin</span></dt>
+                <dd>
+                    <span>{{ timesheet.checkin }}</span>
+                </dd>
+                <dt><span>Go Lunch</span></dt>
+                <dd>
+                    <span>{{ timesheet.goLunch }}</span>
+                </dd>
+                <dt><span>Back Lunch</span></dt>
+                <dd>
+                    <span>{{ timesheet.backLunch }}</span>
+                </dd>
+                <dt><span>Checkout</span></dt>
+                <dd>
+                    <span>{{ timesheet.checkout }}</span>
+                </dd>
+                <dt><span>Total</span></dt>
+                <dd>
+                    <span>{{ timesheet.total }}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{ timesheet.userLogin }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/timesheet', timesheet.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

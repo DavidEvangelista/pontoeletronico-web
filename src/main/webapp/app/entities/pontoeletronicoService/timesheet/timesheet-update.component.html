@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-timesheet-heading">Create or edit a Timesheet</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_weekday">Weekday</label>
+                    <div class="input-group">
+                        <input id="field_weekday" type="text" class="form-control" name="weekday" ngbDatepicker #weekdayDp="ngbDatepicker" formControlName="weekday"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="weekdayDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_checkin">Checkin</label>
+                    <input class="form-control" name="checkin" id="field_checkin"
+                           formControlName="checkin"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_goLunch">Go Lunch</label>
+                    <input class="form-control" name="goLunch" id="field_goLunch"
+                           formControlName="goLunch"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_backLunch">Back Lunch</label>
+                    <input class="form-control" name="backLunch" id="field_backLunch"
+                           formControlName="backLunch"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_checkout">Checkout</label>
+                    <input class="form-control" name="checkout" id="field_checkout"
+                           formControlName="checkout"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
